@@ -22,12 +22,14 @@
              label= "Password" 
              :rules="rules.password"
              v-model="form.password"
+             type="password"
              required
             />
             <v-text-field
              label= "Confirm Password"
              :rules="rules.confirmPassword"
              v-model="form.confirmPassword"
+             type="password"
              required
             />
           </v-form>
@@ -35,7 +37,7 @@
 
         <v-card-actions>
           <v-spacer />
-          <v-btn color="primary">Register</v-btn>
+          <v-btn color="primary" @click="onSubmit">Register</v-btn>
         </v-card-actions>
       </v-card>
       <div class="d-flex align-baseline">
@@ -84,6 +86,11 @@ export default {
           val => val === this.form.password || 'Password does not match'
         ]
       }
+    }
+  },
+  methods: {
+    async onSubmit() {
+      await this.$axios.$post('http://localhost:3000/register', this.form)
     }
   }
 }
