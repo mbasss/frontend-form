@@ -100,11 +100,17 @@ export default {
     async onSubmit() {
       try {
         if(this.$refs.form.validate()) {
-          this.isLoading = true
-          await this.$axios.$post('http://localhost:3000/register', this.form)
+          this.isLoading = true;
+          const response = await this.$axios.$post('http://localhost:3000/register', this.form);
+          if(response.message= 'USER_REGISTER_SUCCESS') {
+            // save access token to cookies
+            // save refresh token to cookier 
+            //  this.$router.push('/dashboard')
+            alert();
+          }
+          this.isLoading = false;
         }
         // this.$router.push('/login')
-        this.isLoading = false;
       } catch (error) {
         if(error.response.data.message == 'EMAIL_ALREADY_EXIST') {
           this.emailExist = true,
