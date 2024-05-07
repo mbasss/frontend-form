@@ -38,7 +38,11 @@
 
         <v-card-actions>
           <v-spacer />
-          <v-btn color="primary" @click="onSubmit">Register</v-btn>
+          <v-btn 
+          :loading="isLoading"
+          color="primary" 
+          @click="onSubmit"
+          >Register</v-btn>
         </v-card-actions>
       </v-card>
       <div class="d-flex align-baseline">
@@ -64,6 +68,7 @@ export default {
 
   data () {
     return {
+      isLoading: false,
       emailExist: false,
       form : {
         fullname: '',
@@ -95,14 +100,18 @@ export default {
     async onSubmit() {
       try {
         if(this.$refs.form.validate()) {
+          this.isLoading = true
           await this.$axios.$post('http://localhost:3000/register', this.form)
         }
         // this.$router.push('/login')
+        this.isLoading = false;
       } catch (error) {
         if(error.response.data.message == 'EMAIL_ALREADY_EXIST') {
           this.emailExist = true,
           this.$refs.form.validate();
         }
+
+        this.isLoading = false;
       }
     }
   }
