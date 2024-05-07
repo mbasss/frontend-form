@@ -16,6 +16,7 @@
              label= "Email" 
              :rules="rules.email"
              v-model="form.email"
+             @keydown="emailExist = false"
              required
             />
             <v-text-field
