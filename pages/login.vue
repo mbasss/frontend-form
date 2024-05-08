@@ -8,10 +8,14 @@
           <v-form ref="form">
             <v-text-field
              label= "Email"
+             :rules="rules.email"
+             v-model="form.email"
              required
             />
             <v-text-field
              label= "Password" 
+             :rules="rules.password"
+             v-model="form.password"
              type="password"
              required
             />
@@ -39,24 +43,52 @@
           class="pl-1"
           >Register</v-btn>
         </p>
-      </div>
+        <p>Nama Kamu : {{ fullname }}</p>
+    </div>
     </v-col>
   </v-row>
 </template>
 
 <script>
+import {mapState} from 'vuex';
 export default {
   layout:  'auth',
 
   data() {
     return {
-      isLoading: false
+      isLoading: false,
+      form: {
+        email: '',
+        password: ''
+      },
+      rules: {
+        fullname: [
+          val => !!val || 'Fullname is required'
+        ],
+        email: [
+          val => !!val || 'Email is required',
+          val => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(val) || 'Email must be valid',
+          val => !this.emailExist || 'Email already exist'
+        ],
+      }
     }
   },
   methods: {
     async onSubmit() {
-      
+      try {
+        this.isLoading = true
+        await this.$store.dispatch('auth/login', this.form)
+        this.loading = false
+      } catch (error) {
+        console.log(error.response);
+        this.loading = false
+      }
     }
+  },
+
+  computed: {
+    ...mapState('auth', ['fullname'])
   }
+
 }
 </script>
