@@ -78,10 +78,10 @@ export default {
       try {
         this.isLoading = true
         await this.$store.dispatch('auth/login', this.form)
-        this.loading = false
+        this.isLoading = false
       } catch (error) {
         console.log(error.response);
-        this.loading = false
+        this.isLoading = false
       }
     }
   },
