@@ -5,6 +5,7 @@
         <v-toolbar color="primary" dark>LOGIN</v-toolbar>
 
         <v-card-text>
+          <v-alert color="red lighten-2" dark v-if="isError">{{ message }}</v-alert>
           <v-form ref="form">
             <v-text-field
              label= "Email"
@@ -57,6 +58,8 @@ export default {
   data() {
     return {
       isLoading: false,
+      isError: false,
+      message: null,
       form: {
         email: '',
         password: ''
@@ -80,7 +83,8 @@ export default {
         await this.$store.dispatch('auth/login', this.form)
         this.isLoading = false
       } catch (error) {
-        console.log(error.response);
+        this.isError = true
+        this.message = error.response? error.response.data.message : 'SERVER_ERROR'
         this.isLoading = false
       }
     }
