@@ -65,13 +65,13 @@ export default {
         password: ''
       },
       rules: {
-        fullname: [
-          val => !!val || 'Fullname is required'
-        ],
         email: [
-          val => !!val || 'Email is required',
-          val => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(val) || 'Email must be valid',
-          val => !this.emailExist || 'Email already exist'
+          val => !!val || this.$t('EMAIL_REQUIRED', {field: 'email'}),
+          val => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(val) || this.$t('EMAIL_INVALID'),
+        ],
+        password: [
+          val => !!val || this.$t('FIELD_REQUIRED', {field: 'password'}),
+          val => val.length >= 6 || this.$t('FIELD_MIN', {field: 'password', min: 6})
         ],
       }
     }

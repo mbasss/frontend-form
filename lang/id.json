@@ -1,7 +1,16 @@
 {
   "SERVER_ERROR": "Terjadi kesalahan pada server. Silakan coba beberapa saat lagi.",
-  "EMAIL_EXIST": "Email sudah terdaftar. Silakan gunakan email yang lain.",
-  "EMAIL_NOT_EXIST": "Email tidak terdaftar. Silakan coba lagi.",
-  "USER_NOT_FOUND": "User tidak terdaftar. Silakan coba lagi.",
-  "INVALID_PASSWORD": "Password yang anda masukkan salah. Silakan coba lagi."
+
+  "FIELD_REQUIRED": "{field} harus diisi",
+  "FIELD_MIN": "{field} harus diisi minimal {min} karakter",
+  "FIELD_CONFIRM": "Isi {fieldConfirm} tidak cocok dengan {field}",
+
+  "EMAIL_EXIST": "Email sudah terdaftar. Silakan gunakan email yang lain",
+  "EMAIL_NOT_EXIST": "Email tidak terdaftar. Silakan coba lagi",
+  "EMAIL_INVALID": "Email tidak valid",
+
+  "USERNAME_EXIST": "Username sudah terdaftar. Silakan gunakan username yang lain",
+  "USER_NOT_FOUND": "User tidak terdaftar. Silakan coba lagi",
+
+  "INVALID_PASSWORD": "Password yang anda masukkan salah. Silakan coba lagi"
 }

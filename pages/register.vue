@@ -7,7 +7,7 @@
         <v-card-text>
           <v-form ref="form">
             <v-text-field
-             label= "Name"
+             label= "Fullname"
              :rules="rules.fullname"
              v-model="form.fullname"
              required
@@ -78,20 +78,20 @@ export default {
       },
       rules: {
         fullname: [
-          val => !!val || 'Fullname is required'
+          val => !!val || this.$t('FIELD_REQUIRED', {field: 'fullname'}),
         ],
         email: [
-          val => !!val || 'Email is required',
-          val => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(val) || 'Email must be valid',
-          val => !this.emailExist || 'Email already exist'
+          val => !!val || this.$t('EMAIL_REQUIRED', {field: 'email'}),
+          val => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(val) || this.$t('EMAIL_INVALID'),
+          val => !this.emailExist || this.$t('EMAIL_EXIST')
         ],
         password: [
-          val => !!val || 'Password is required',
-          val => val.length >= 6 || 'Password must be at least 6 characters'
+          val => !!val || this.$t('FIELD_REQUIRED', {field: 'password'}),
+          val => val.length >= 6 || this.$t('FIELD_MIN', {field: 'password', min: 6})
         ],
         confirmPassword: [
-          val => !!val || 'Confirm Password is required',
-          val => val === this.form.password || 'Password does not match'
+          val => !!val || this.$t('FIELD_REQUIRED', {field: 'confirm password'}),
+          val => val === this.form.password || this.$t('FIELD_CONFIRM', {fieldConfirm: 'confirm password', field: 'password'})
         ]
       }
     }

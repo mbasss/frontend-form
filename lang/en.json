@@ -1,8 +1,16 @@
 {
   "SERVER_ERROR": "An error occurred on the server. Please try again in a moment.",
-  "EMAIL_EXIST": "Email already exist. Please use another email.",
-  "USERNAME_EXIST": "User already exist. Please use another username.",
+  
+  "FIELD_REQUIRED": "{field} is required",
+  "FIELD_MIN": "{field} must be at least {min} characters",
+  "FIELD_CONFIRM": "{fieldConfirm} does not match {field}",
+  
+  "EMAIL_EXIST": "Email already exist. Please use another email",
   "EMAIL_NOT_EXIST": "Email not exist. Please try again.",
-  "USER_NOT_FOUND": "User not found. Please try again.",
-  "INVALID_PASSWORD": "Invalid password. Please try again."
+  "EMAIL_INVALID": "Invalid email",
+  
+  "USERNAME_EXIST": "User already exist. Please use another username",
+  "USER_NOT_FOUND": "User not found. Please try again",
+
+  "INVALID_PASSWORD": "Invalid password. Please try again"
 }
