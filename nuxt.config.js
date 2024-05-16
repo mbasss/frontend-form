@@ -8,7 +8,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - MbaSSS Form',
-    title: 'form-nuxt-frontend',
+    title: 'form-frontend',
     htmlAttrs: {
       lang: 'en'
     },
