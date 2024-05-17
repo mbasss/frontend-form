@@ -22,6 +22,11 @@ export const mutations = {
   },
   setRefreshToken(state, refreshToken) {
     state.refreshToken = refreshToken
+  },
+  logout(state) {
+    state.accessToken = null
+    state.refreshToken = null
+    state.fullname = null
   }
 }
 
