@@ -54,7 +54,6 @@
 import {mapState} from 'vuex';
 export default {
   layout:  'auth',
-
   data() {
     return {
       isLoading: false,
@@ -81,6 +80,7 @@ export default {
       try {
         this.isLoading = true
         await this.$store.dispatch('auth/login', this.form)
+        this.$router.push({name: 'index___' + this.$i18n.locale})
         this.isLoading = false
       } catch (error) {
         this.isError = true
@@ -89,10 +89,8 @@ export default {
       }
     }
   },
-
   computed: {
     ...mapState('auth', ['fullname'])
   }
-
 }
 </script>

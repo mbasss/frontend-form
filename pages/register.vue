@@ -103,13 +103,11 @@ export default {
           this.isLoading = true;
           const response = await this.$axios.$post('http://localhost:3000/register', this.form);
           if(response.message= 'USER_REGISTER_SUCCESS') {
-            // save access token to cookies
-            // save refresh token to cookies 
-            //  this.$router.push('/dashboard')
             this.$store.commit('auth/setFullname', response.data.fullname);
             this.$store.commit('auth/setAccessToken', response.data.accessToken);
             this.$store.commit('auth/setRefreshToken', response.data.refreshToken);
-            alert();
+            
+            this.$router.push({name: 'index___' + this.$i18n.locale}) //redirest to index page
           }
           this.isLoading = false;
         }
