@@ -78,15 +78,11 @@
 
 <script>
 export default {
+  middleware: ['authenticated'],
   head () {
     return {
       title: 'Home'
     }
   },
-  mounted () {
-    if(!this.$store.getters['auth/authenticated']) {
-      return this.$router.push('/login')
-    }
-  }
 }
 </script>
