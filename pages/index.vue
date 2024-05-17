@@ -82,6 +82,11 @@ export default {
     return {
       title: 'Home'
     }
+  },
+  mounted () {
+    if(!this.$store.getters['auth/authenticated']) {
+      return this.$router.push('/login')
+    }
   }
 }
 </script>
