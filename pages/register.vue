@@ -64,8 +64,8 @@
 
 <script>
 export default {
+  middleware: ['unauthenticated'],
   layout:  'auth',
-
   data () {
     return {
       isLoading: false,
