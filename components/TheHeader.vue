@@ -7,7 +7,7 @@
       :ripple="false"
       class="pl-0 v-btn--active"
       to="/">
-        <p class="text-h5 mb-0"><strong>MbaSSS Form</strong></p>
+        <p class="text-h5 mb-0"><strong>MbaSSS</strong>Form</p>
       </v-btn>
     </v-toolbar-title>
     <v-spacer></v-spacer>
