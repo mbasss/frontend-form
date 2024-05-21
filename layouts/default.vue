@@ -1,6 +1,7 @@
 <template>
   <v-app dark>
     <v-main>
+      <TheHeader/>
       <Nuxt />
     </v-main>
   </v-app>
