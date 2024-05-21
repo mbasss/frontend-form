@@ -66,7 +66,7 @@ export default {
       },
       rules: {
         email: [
-          val => !!val || this.$t('EMAIL_REQUIRED', {field: 'email'}),
+          val => !!val || this.$t('FIELD_REQUIRED', {field: 'email'}),
           val => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(val) || this.$t('EMAIL_INVALID'),
         ],
         password: [
