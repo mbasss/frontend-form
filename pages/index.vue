@@ -17,12 +17,7 @@ export default {
   methods: {
     async fetchForms() {
       try {
-       const response = await this.$axios.$get('/forms', { //gunakan $get agar hanya menampilkan data yang diperlukan
-          headers: {
-            'Authorization': `Bearer ${this.$store.state.auth.accessToken}`
-          }
-        })
-
+       const response = await this.$axios.$get('/forms') //gunakan $get agar hanya menampilkan data yang diperlukan
         console.log(response)
       } catch (error) {
         console.log(error)
