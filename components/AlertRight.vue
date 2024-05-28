@@ -1,19 +1,21 @@
 <template>
   <div  class="v-alert-right" >
     <v-alert
+    v-for="(alert, index) in alerts"
+    :key="index"
     outlined
     border="left"
-    type="error"
+    :type="alert.type"
     class="v-bg-white"
     >
     <v-row>
       <v-col class="grow">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas alias consequuntur quaerat ipsum beatae. Dolore et consequatur ipsa, minima minus suscipit rem assumenda illo in inventore eveniet fugit quidem aliquam mollitia, nulla, reiciendis fugiat saepe? Similique aperiam pariatur laborum debitis atque quia! Adipisci consectetur delectus totam fugiat. Harum eaque totam neque labore in facere fugit ut veritatis minus dolores ipsa aliquid laudantium aspernatur eius autem enim temporibus possimus porro, eos modi magni repellat commodi. Facere non, dolore quam reiciendis soluta ut quia sint? Magnam quod commodi quo distinctio, beatae ipsam voluptatum quidem exercitationem tempore modi eius quam corrupti laborum harum?
+        {{ alert.message }}
       </v-col>
       <v-col class="shrink">
         <v-btn
         small
-        color="error"
+        :color="alert.type"
         icon
         >
           <v-icon>mdi-close</v-icon>
@@ -24,6 +26,19 @@
     </v-alert>
   </div>
 </template>
+
+<script>
+export default ({
+  data() {
+    return {
+      alerts: [
+        { message: 'test error 1', type: 'error' },
+        { message: 'test error 2', type: 'success' }
+      ]
+    }
+  }
+})
+</script>
 
 <style scoped>
 .v-bg-white {
