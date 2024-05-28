@@ -3,6 +3,7 @@
     <v-alert
     v-for="(alert, index) in alerts"
     :key="index"
+    v-model="alert.show"
     outlined
     border="left"
     :type="alert.type"
@@ -15,8 +16,9 @@
       <v-col class="shrink">
         <v-btn
         small
-        :color="alert.type"
         icon
+        :color="alert.type"
+        @click="onClose(index)"
         >
           <v-icon>mdi-close</v-icon>
         </v-btn>
@@ -32,9 +34,14 @@ export default ({
   data() {
     return {
       alerts: [
-        { message: 'test error 1', type: 'error' },
-        { message: 'test error 2', type: 'success' }
+        { message: 'test error 1', type: 'error', show: true },
+        { message: 'test error 2', type: 'success', show: true }
       ]
+    }
+  },
+  methods: {
+    onClose(index) {
+      this.alerts[index].show = false
     }
   }
 })
