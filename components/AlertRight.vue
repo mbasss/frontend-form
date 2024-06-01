@@ -30,19 +30,20 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default ({
   data() {
     return {
-      alerts: [
-        { message: 'test error 1', type: 'error', show: true },
-        { message: 'test error 2', type: 'success', show: true }
-      ]
     }
   },
   methods: {
     onClose(index) {
-      this.alerts[index].show = false
+      this.$store.commit('alerts/close', index)
     }
+  },
+  computed: {
+    ...mapState('alerts', ['alerts'])
   }
 })
 </script>
