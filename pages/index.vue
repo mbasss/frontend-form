@@ -22,9 +22,9 @@ export default {
     async fetchForms() {
       try {
        const response = await this.$axios.$get('/forms') //gunakan $get agar hanya menampilkan data yang diperlukan
-        console.log(response)
+        // console.log(response)
       } catch (error) {
-        console.log(error)
+        // console.log(error)
       }
     }
   },
