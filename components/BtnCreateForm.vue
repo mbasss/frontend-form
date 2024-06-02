@@ -17,8 +17,16 @@ export default {
     }
   },
   methods: {
-    createNewForm() {
-      this.isLoading = true
+    async createNewForm() {
+      try {
+        this.isLoading = true
+        const forms = await this.$store.dispatch('forms/store')
+        console.log(forms);
+        this.isLoading = false
+      } catch (error) {
+        console.log(error.response);
+        this.isLoading = false
+      }
       // this.$router.push('/form/create')
     }
   }
