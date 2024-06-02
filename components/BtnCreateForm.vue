@@ -22,11 +22,16 @@ export default {
         this.isLoading = true
         const forms = await this.$store.dispatch('forms/store')
         const questions = await this.$store.dispatch('questions/store', forms.data._id)
-        console.log(forms);
-        console.log(questions);
         this.isLoading = false
+
+        this.$router.push(`/questions/${forms.data._id}`);
       } catch (error) {
         console.log(error.response);
+        this.$store.commit('alerts/show', {
+          type: 'error',
+          show: true,
+          message: 'SERVER_ERROR'
+        })
         this.isLoading = false
       }
       // this.$router.push('/form/create')
