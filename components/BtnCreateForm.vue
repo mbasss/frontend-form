@@ -21,7 +21,9 @@ export default {
       try {
         this.isLoading = true
         const forms = await this.$store.dispatch('forms/store')
+        const questions = await this.$store.dispatch('questions/store', forms.data._id)
         console.log(forms);
+        console.log(questions);
         this.isLoading = false
       } catch (error) {
         console.log(error.response);
