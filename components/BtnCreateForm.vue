@@ -26,17 +26,14 @@ export default {
 
         this.$router.push(`/questions/${forms.data._id}`);
       } catch (error) {
-        console.log(error.data);
         this.$store.commit('alerts/show', {
           type: 'error',
           show: true,
-          message: 'SERVER_ERROR'
+          message: error.data.message
         })
         this.isLoading = false
       }
-      // this.$router.push('/form/create')
     }
   }
-
 }
 </script>
