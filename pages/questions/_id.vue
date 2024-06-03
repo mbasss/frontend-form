@@ -49,8 +49,19 @@ export default {
       return false
     }
   },
+  methods: {
+    async fetch() {
+      try {
+        const response = await this.$store.dispatch('forms/show', this.formId)
+
+        return response
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  },
   mounted() {
-    console.info(this.formId)
+    this.fetch()
   }
 }
 </script>
