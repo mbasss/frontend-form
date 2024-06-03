@@ -32,3 +32,25 @@ import Toolbar from '../../components/Toolbar.vue';
   </v-container>
 </div>
 </template>
+
+<script>
+export default {
+  async asyncData({ params }) {
+    try {
+      if(!params.id) {
+        throw {
+          message: 'FORM_ID_EMPTY'
+        }
+      }
+
+      return { formId: params.id }
+    } catch (error) {
+      redirect('/404')
+      return false
+    }
+  },
+  mounted() {
+    console.info(this.formId)
+  }
+}
+</script>
