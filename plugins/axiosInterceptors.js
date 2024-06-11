@@ -7,7 +7,7 @@ export default function ({ $axios, redirect, store }) {
 
   $axios.onResponseError(async error => {
     try {
-      if(error.response.status === 401 && error.reponse.status.message === 'INVALID_REFRESH_TOKEN') { //authentication error
+      if(error.response.status === 401 || error.reponse.status.message === 'INVALID_REFRESH_TOKEN') { //authentication error
         let refreshToken = store.state.auth.refreshToken
 
         const response = await $axios.$post('/refresh-token', {'refreshToken': refreshToken})
