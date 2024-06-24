@@ -7,8 +7,6 @@ export default function ({ $axios, redirect, store }) {
 
   $axios.onResponseError(async (error) => {
     try {
-      console.log(error.response);
-      
       if(error.response.data.message === 'REFRESH_TOKEN_EXPIRED' || error.response.data.message === 'INVALID_REFRESH_TOKEN') {
         throw new Error('LOGOUT')
       }
