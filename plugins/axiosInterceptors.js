@@ -5,9 +5,15 @@ export default function ({ $axios, redirect, store }) {
     }
   })
 
-  $axios.onResponseError(async error => {
+  $axios.onResponseError(async (error) => {
     try {
-      if(error.response.status === 401 || error.reponse.status.message === 'INVALID_REFRESH_TOKEN') { //authentication error
+      console.log(error.response);
+      
+      if(error.response.data.message === 'REFRESH_TOKEN_EXPIRED' || error.response.data.message === 'INVALID_REFRESH_TOKEN') {
+        throw new Error('LOGOUT')
+      }
+
+      if(error.response.status === 401 || error.response.status.message === 'ACCESS_TOKEN_EXPIRED') { //authentication error
         let refreshToken = store.state.auth.refreshToken
 
         const response = await $axios.$post('/refresh-token', {'refreshToken': refreshToken})
@@ -20,10 +26,10 @@ export default function ({ $axios, redirect, store }) {
         // jalankan ulang permintaan terakhir
         let originalRequest = error.config;
         originalRequest.headers['Authorization'] = `Bearer ${response.accessToken}`
-
         return $axios(originalRequest)
       } else {
-        return Promise.reject(error.response) // error yang lain
+        
+        return Promise.reject(error) // error yang lain
       }
     } catch (error) {
       if( error.message === 'LOGOUT' ) {
