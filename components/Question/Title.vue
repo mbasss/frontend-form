@@ -20,16 +20,19 @@ export default {
     ...mapState('forms',['id', 'title'])
   },
   methods: {
-    typing(value) {
+    async typing(value) {
       try {
         let payload = {
           formId: this.id,
           title: value
         }
-        const forms = this.$store.dispatch('forms/update', payload)
-        console.log(forms);        
+        const forms = await this.$store.dispatch('forms/update', payload)
+        if(!forms) throw {message: 'ERROR'}
       } catch (error) {
-        console.error(error);
+        this.$store.commit('alerts/show', {
+            type: 'error',
+            message: error.response? this.$t(error.response.data.message) : this.$t('SERVER_ERROR')
+          })
       }
       
     }
