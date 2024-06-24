@@ -14,7 +14,7 @@ import Toolbar from '../../components/Toolbar.vue';
       <v-col md="8" offset-md="2" sm="10" offset-sm="1 ">
         <v-card>
           <v-card-text>
-            Test
+            <QuestionTitle />
           </v-card-text>
         </v-card>
       </v-col>
