@@ -28,5 +28,12 @@ export const actions = {
     commit('setForm', response.data)
 
     return response    
+  },
+
+  async update({}, payload) {
+    const response = await this.$axios.$put(`/forms/${payload.formId}`, payload)
+    if(!response) {return false}  
+
+    return response
   }
 }
