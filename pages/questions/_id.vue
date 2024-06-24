@@ -53,10 +53,25 @@ export default {
     async fetch() {
       try {
         const response = await this.$store.dispatch('forms/show', this.formId)
+        if(!response) {
+          throw {
+            message: 'FORM_NOT_FOUND'
+          }
+        }
 
         return response
       } catch (error) {
-        console.error(error);
+        if(error.response){
+          this.$nuxt.error({
+            statusCode: error.response.status,
+            customMessage: error.response.data.message
+          })
+        } else {
+          this.$store.commit('alerts/show', {
+            type: 'error',
+            message: this.$t('SERVER_ERROR')
+          })
+        }
       }
     }
   },

@@ -12,5 +12,9 @@
   "USERNAME_EXIST": "Username sudah terdaftar. Silakan gunakan username yang lain",
   "USER_NOT_FOUND": "User tidak terdaftar. Silakan coba lagi",
 
-  "INVALID_PASSWORD": "Password yang anda masukkan salah. Silakan coba lagi"
+  "INVALID_PASSWORD": "Password yang anda masukkan salah. Silakan coba lagi",
+  "INVALID_ID": "ID tidak valid",
+  "INVALID_FORM_ID": "ID Form tidak valid",
+
+  "FORM_NOT_FOUND": "Form tidak ditemukan"
 }

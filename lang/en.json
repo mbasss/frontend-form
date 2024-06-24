@@ -12,5 +12,9 @@
   "USERNAME_EXIST": "User already exist. Please use another username",
   "USER_NOT_FOUND": "User not found. Please try again",
 
-  "INVALID_PASSWORD": "Invalid password. Please try again"
+  "INVALID_PASSWORD": "Invalid password. Please try again",
+  "INVALID_ID": "Invalid ID",
+  "INVALID_FORM_ID": "Invalid Form ID",
+
+  "FORM_NOT_FOUND": "Form not found"
 }

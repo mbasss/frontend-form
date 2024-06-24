@@ -24,8 +24,8 @@ export default {
   },
   data () {
     return {
-      pageNotFound: '404 Not Found',
-      otherError: 'An error occurred'
+      pageNotFound: this.$t(this.error.customMessage) || '404 Not Found',
+      otherError: this.$t(this.error.customMessage) || 'SERVER_ERROR'
     }
   },
   head () {
