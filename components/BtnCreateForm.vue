@@ -28,7 +28,6 @@ export default {
       } catch (error) {
         this.$store.commit('alerts/show', {
           type: 'error',
-          show: true,
           message: error.data.message
         })
         this.isLoading = false
