@@ -15,6 +15,7 @@ import Toolbar from '../../components/Toolbar.vue';
         <v-card>
           <v-card-text>
             <QuestionTitle />
+            <QuestionDescription />
           </v-card-text>
         </v-card>
       </v-col>
