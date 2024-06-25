@@ -1,3 +1,9 @@
+const config = {
+  headers: {
+    Autosave: true
+  }
+}
+
 export const state = () => ({
   id: null,
   title: null,
@@ -31,7 +37,7 @@ export const actions = {
   },
 
   async update({}, payload) {
-    const response = await this.$axios.$put(`/forms/${payload.formId}`, payload)
+    const response = await this.$axios.$put(`/forms/${payload.formId}`, payload, config)
     if(!response) {return false}  
 
     return response

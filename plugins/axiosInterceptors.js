@@ -3,6 +3,16 @@ export default function ({ $axios, redirect, store }) {
     if (store.state.auth.accessToken) {
       config.headers['Authorization'] = `Bearer ${store.state.auth.accessToken}`
     }
+
+    if (config.headers.Autosave) {
+      console.log('Mulai menyimpan otomatis');
+    }
+  })
+
+  $axios.onResponse((response) => {
+    if (response.config.headers.Autosave) {
+      console.log('Selesai menyimpan otomatis');
+    }
   })
 
   $axios.onResponseError(async (error) => {
