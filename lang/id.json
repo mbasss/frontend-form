@@ -16,5 +16,9 @@
   "INVALID_ID": "ID tidak valid",
   "INVALID_FORM_ID": "ID Form tidak valid",
 
-  "FORM_NOT_FOUND": "Form tidak ditemukan"
+  "FORM_NOT_FOUND": "Form tidak ditemukan",
+
+  "SAVE_PROCESS": "Sedang menyimpan data ...",
+  "SAVE_SUCCESS": "Data berhasil disimpan",
+  "SAVE_FAILED": "Data gagal disimpan"
 }

@@ -16,5 +16,9 @@
   "INVALID_ID": "Invalid ID",
   "INVALID_FORM_ID": "Invalid Form ID",
 
-  "FORM_NOT_FOUND": "Form not found"
+  "FORM_NOT_FOUND": "Form not found",
+  
+  "SAVE_PROCESS": "Saving data ...",
+  "SAVE_SUCCESS": "Data saved successfully",
+  "SAVE_FAILED": "Data failed to save"
 }
