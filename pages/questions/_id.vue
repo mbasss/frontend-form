@@ -6,15 +6,15 @@ import Toolbar from '../../components/Toolbar.vue';
     fluid
     class="pa-0"
     >
-    <Toolbar />
+    <Toolbar class="mb-5" />
   </v-container>
 
   <v-container>
     <v-row>
       <v-col md="8" offset-md="2" sm="10" offset-sm="1 ">
-        <v-card>
+        <v-card class="card-border-top">
           <v-card-text>
-            <QuestionTitle />
+            <QuestionTitle class="text-h5" />
             <QuestionDescription />
           </v-card-text>
         </v-card>
