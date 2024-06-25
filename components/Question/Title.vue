@@ -13,7 +13,7 @@ import {mapState} from 'vuex'
 export default {
   data() {
     return {
-
+      timer: null
     }
   },
   computed: {
@@ -22,12 +22,17 @@ export default {
   methods: {
     async typing(value) {
       try {
-        let payload = {
-          formId: this.id,
-          title: value
-        }
-        const forms = await this.$store.dispatch('forms/update', payload)
-        if(!forms) throw {message: 'ERROR'}
+        clearTimeout(this.timer)
+
+        this.timer = setTimeout(async () => {
+          let payload = {
+            formId: this.id,
+            title: value
+          }
+
+          const forms = await this.$store.dispatch('forms/update', payload)
+          if(!forms) throw {message: 'ERROR'}
+        }, 1000)
       } catch (error) {
         this.$store.commit('alerts/show', {
             type: 'error',
