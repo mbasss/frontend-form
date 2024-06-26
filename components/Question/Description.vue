@@ -1,5 +1,6 @@
 <template>
   <v-text-field
+  class="creator-input"
   placeholder="Description"
   :value="description"
   @input="typing($event)"

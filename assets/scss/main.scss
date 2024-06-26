@@ -2,6 +2,12 @@
   text-transform: none !important;
 }
 
+// CARD BORDER
 .card-border-top {
   border-top: .5rem solid $blue-border-color !important;
+}
+
+/* INPUT */
+.creator-input > .v-input__control > .v-input__slot:before {
+  border-color: transparent !important;
 }
