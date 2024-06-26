@@ -54,10 +54,11 @@ export default {
     async fetch() {
       try {
         const response = await this.$store.dispatch('forms/show', this.formId)
-        if(!response) {
-          throw {
-            message: 'FORM_NOT_FOUND'
-          }
+        if(!response)  throw { message: 'FORM_NOT_FOUND' }
+
+        // jika berhasil membuat forms lalu set questions
+        if(response.data.questions.length > 0) {
+          this.$store.commit('questions/set', response.data.question)
         }
 
         return response
