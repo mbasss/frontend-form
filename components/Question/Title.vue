@@ -1,5 +1,6 @@
 <template>
   <v-text-field
+  hide-details
   class="creator-input"
   placeholder="Title"
   :value="title"
