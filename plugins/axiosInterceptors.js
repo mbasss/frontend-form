@@ -5,7 +5,6 @@ export default function ({ $axios, redirect, store }) {
     }
 
     if (config.headers.Autosave) {
-      console.log('Mulai menyimpan otomatis');
       store.commit('saves/start')
     }
   })
@@ -13,7 +12,6 @@ export default function ({ $axios, redirect, store }) {
   $axios.onResponse((response) => {
     if (response.config.headers.Autosave) {
       setTimeout(() => {
-        console.log('Selesai menyimpan otomatis');
         store.commit('saves/success')
       }, 3000);
     }
@@ -21,7 +19,7 @@ export default function ({ $axios, redirect, store }) {
 
   $axios.onResponseError(async (error) => {
     try {
-      if(response.config.headers.Autosave) {
+      if(error.response.config.headers.Autosave) {
         store.commit('saves/failed')
       }
       if(error.response.data.message == "REFRESH_TOKEN_EXPIRED" || error.response.data.message == 'INVALID_REFRESH_TOKEN') {
@@ -42,13 +40,15 @@ export default function ({ $axios, redirect, store }) {
         let originalRequest = error.config;
         originalRequest.headers['Authorization'] = `Bearer ${response.accessToken}`
         return $axios(originalRequest)
-      } else {
-        return Promise.reject(error) // error yang lain
-      }
+      } 
+      return Promise.reject(error) // error yang lain
+      
     } catch (error) {
       if( error.message === 'LOGOUT' ) {
         return redirect( '/logout' )
       }
+
+      return Promise.reject(error)
     }
   })
 }

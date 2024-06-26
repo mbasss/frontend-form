@@ -16,7 +16,7 @@ export const mutations = {
     state.message = 'SAVE_SUCCESS'
   },
   failed(state) {
-    state.message = 'SAVE_SUCCESS'
+    state.message = 'SAVE_FAILED'
   }
 
 }
