@@ -20,12 +20,8 @@ import Toolbar from '../../components/Toolbar.vue';
         </v-card>
       </v-col>
     </v-row>
-
-    <v-row>
-      <v-col md="8" offset-md="2" sm="10" offset-sm="1 ">
-        <QuestionCard :formId="formId" />
-      </v-col>
-    </v-row>
+    
+      <QuestionCard :formId="formId" />
   </v-container>
 </div>
 </template>
