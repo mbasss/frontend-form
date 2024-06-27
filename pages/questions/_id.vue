@@ -23,11 +23,7 @@ import Toolbar from '../../components/Toolbar.vue';
 
     <v-row>
       <v-col md="8" offset-md="2" sm="10" offset-sm="1 ">
-        <v-card>
-          <v-card-text>
-            Test
-          </v-card-text>
-        </v-card>
+        <QuestionCard :formId="formId" />
       </v-col>
     </v-row>
   </v-container>
@@ -55,10 +51,10 @@ export default {
       try {
         const response = await this.$store.dispatch('forms/show', this.formId)
         if(!response)  throw { message: 'FORM_NOT_FOUND' }
-
+        
         // jika berhasil membuat forms lalu set questions
         if(response.data.questions.length > 0) {
-          this.$store.commit('questions/set', response.data.question)
+          this.$store.commit('questions/set', response.data.questions)
         }
 
         return response
