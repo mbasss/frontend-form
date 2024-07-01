@@ -5,7 +5,7 @@
   class="creator-input"
   v-model="type"
   :items="items"
-  @input="typing($event)"
+  @input="submit($event)"
   >
   
     <template v-slot:selection="{ item }">
@@ -35,30 +35,29 @@ export default {
     }
   },
   methods: {
-    // async typing(value) {
-    //   try {
-    //     clearTimeout(this.timer)
+    async submit() {
+      try {
+        let payload = {
+          formId: this.formId,
+          questionId: this.question.id,
+          form: {
+            type: this.type
+          }
+        }
 
-    //     this.timer = setTimeout(async () => {
-    //       let payload = {
-    //         formId: this.formId,
-    //         questionId: this.question.id,
-    //         form: {
-    //           question: this.localQuestion
-    //         }
-    //       }
-
-    //       const forms = await this.$store.dispatch('questions/update', payload)
-    //       if(!forms) throw {message: 'ERROR'}
-    //     }, 1000)
-    //   } catch (error) {
-    //     this.$store.commit('alerts/show', {
-    //         type: 'error',
-    //         message: error.response? this.$t(error.response.data.message) : this.$t('SERVER_ERROR')
-    //       })
-    //   }
-      
-    // }
+        await this.$store.dispatch('questions/update', payload)
+      } catch (error) {
+        this.$store.commit('alerts/show', {
+          type: 'error',
+          message: error.response? this.$t(error.response.data.message) : this.$t('SERVER_ERROR')
+        })
+      }
+    }
+  },
+  watch: {
+    type() {
+      this.submit()
+    }
   }
 }
 </script>
