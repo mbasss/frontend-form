@@ -7,8 +7,11 @@
       <v-card>
         <v-card-text background="white" class="pb-0">
           <v-row>
-            <v-col cols="12" sm="8">
+            <v-col cols="12" sm="4">
               <QuestionInput :question="question" :formId="formId"/>
+            </v-col>
+            <v-col cols="12" sm="4">
+              <QuestionSelectType :question="question" :formId="formId"/>
             </v-col>
           </v-row>
         </v-card-text>
