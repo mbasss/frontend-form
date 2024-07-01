@@ -6,7 +6,11 @@
     <v-col md="8" offset-md="2" sm="10" offset-sm="1">
       <v-card>
         <v-card-text background="white" class="pb-0">
-          {{ question.question }}
+          <v-row>
+            <v-col cols="12" sm="8">
+              <QuestionInput :question="question" :formId="formId"/>
+            </v-col>
+          </v-row>
         </v-card-text>
 
         <v-card-actions>
