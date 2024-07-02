@@ -7,7 +7,7 @@
       <v-card>
         <v-card-text background="white" class="pb-0">
           <v-row>
-            <v-col cols="12" sm="4">
+            <v-col cols="12" sm="8">
               <QuestionInput :question="question" :formId="formId"/>
             </v-col>
             <v-col cols="12" sm="4">
@@ -21,6 +21,9 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <QuestionBtnRemove :question="question" :formId="formId" />
+          <v-divider vertical class="mx-3"></v-divider>
+          <label for="required" class="mr-3">Required</label>
+          <QuestionSwitchRequired class="mt-0" :question="question" :formId="formId" />
         </v-card-actions>
       </v-card>
     </v-col>
