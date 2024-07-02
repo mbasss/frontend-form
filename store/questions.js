@@ -13,7 +13,15 @@ export const mutations = {
   },
   update(state, payload) {
     const index = state.questions.findIndex(q => q.id === payload.questionId)
-    state.questions[index].type = payload.form.type
+    if(payload.form.hasOwnProperty('question')) {
+      state.questions[index].question = payload.form.question
+    } else if(payload.form.hasOwnProperty('type')) {
+      state.questions[index].type = payload.form.type
+    } else if(payload.form.hasOwnProperty('options')) {
+      state.questions[index].options = payload.form.options
+    } else if (payload.form.hasOwnProperty('required')) {
+      state.questions[index].required = payload.form.required
+    }
   }
 }
 
