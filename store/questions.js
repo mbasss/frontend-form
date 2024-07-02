@@ -22,6 +22,9 @@ export const mutations = {
     } else if (payload.form.hasOwnProperty('required')) {
       state.questions[index].required = payload.form.required
     }
+  },
+  remove(state, payload) {
+    state.questions = state.questions.filter(q => q.id !== payload.questionId)
   }
 }
 
@@ -40,9 +43,9 @@ export const actions = {
     return response
   },
   async remove({commit}, payload) {
-    console.log(payload);
-    
     const response = await this.$axios.$delete(`/forms/${payload.formId}/questions/${payload.questionId}`, config)
+    
+    commit('remove', payload)
 
     return response
   }
