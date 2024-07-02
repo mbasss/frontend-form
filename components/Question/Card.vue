@@ -16,9 +16,11 @@
           </v-row>
         </v-card-text>
 
+        <v-divider class="mx-4 mb-0"></v-divider>
+
         <v-card-actions>
-          <v-divider></v-divider>
-          <v-btn text>Button</v-btn>
+          <v-spacer></v-spacer>
+          <QuestionBtnRemove :question="question" :formId="formId" />
         </v-card-actions>
       </v-card>
     </v-col>
