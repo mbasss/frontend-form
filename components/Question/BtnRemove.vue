@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  props:['formId', 'questionId'],
+  props:['formId', 'question'],
   data() {
     return {
       isDisable: false,
@@ -25,14 +25,12 @@ export default {
 
         let payload = {
           formId: this.formId,
-          questionId: this.questionId
+          questionId: this.question.id
         }
-        setTimeout(() => {
-          
-          this.isDisable = false
-        }, 5000);
-        // const forms = await this.$store.dispatch('questions/remove', payload)
-        // if(!forms) throw {message: 'ERROR'}
+
+        this.isDisable = false
+        const forms = await this.$store.dispatch('questions/remove', payload)
+        if(!forms) throw {message: 'ERROR'}
       } catch (error) {
         this.$store.commit('alerts/show', {
             type: 'error',

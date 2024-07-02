@@ -38,5 +38,12 @@ export const actions = {
 
     commit('update', payload)
     return response
+  },
+  async remove({commit}, payload) {
+    console.log(payload);
+    
+    const response = await this.$axios.$delete(`/forms/${payload.formId}/questions/${payload.questionId}`, config)
+
+    return response
   }
 }
