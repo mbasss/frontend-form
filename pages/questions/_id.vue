@@ -21,7 +21,14 @@ import Toolbar from '../../components/Toolbar.vue';
       </v-col>
     </v-row>
     
-      <QuestionCard :formId="formId" />
+    <QuestionCard :formId="formId" />
+
+    <v-row>
+      <v-col md="8" offset-md="2" sm="10" offset-sm="1" class="d-flex">
+        <v-spacer></v-spacer>
+        <QuestionBtnAdd :formId="formId" />
+      </v-col>
+    </v-row>
   </v-container>
 </div>
 </template>

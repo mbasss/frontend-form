@@ -11,6 +11,9 @@ export const mutations = {
   set(state, questions) {
     state.questions = questions
   },
+  add(state, question) {
+    state.questions.push(question)
+  },
   update(state, payload) {
     const index = state.questions.findIndex(q => q.id === payload.questionId)
     if(payload.form.hasOwnProperty('question')) {
@@ -29,9 +32,11 @@ export const mutations = {
 }
 
 export const actions = {
-  async store({}, id) {
-    const response = await this.$axios.$post(`/forms/${id}/questions`)
+  async store({commit}, id) {
+    const response = await this.$axios.$post(`/forms/${id}/questions`, {}, config)
     if(!response) {return false}
+
+    commit('add', response.data)
 
     return response
   },
